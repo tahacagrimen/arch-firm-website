@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
+import { useParams } from "react-router-dom";
 
 const PROJECTS = gql`
   query GetProjects {
@@ -16,6 +17,10 @@ const PROJECTS = gql`
 
 const Home = () => {
   const { loading, error, data } = useQuery(PROJECTS);
+
+  const { id } = useParams();
+
+  console.log(id);
 
   console.log(data);
 
