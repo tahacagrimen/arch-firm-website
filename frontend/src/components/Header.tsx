@@ -8,7 +8,7 @@ const Header = () => {
 
   console.log(pathname);
 
-  const handleHangdownText = (path: string): string => {
+  const handleHangdownText = (path: string) => {
     if (path === "/") {
       return "ANASAYFA";
     } else if (path === "/about") {
