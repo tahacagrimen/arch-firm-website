@@ -17,8 +17,7 @@ const Header = () => {
       return "İLETİŞİM";
     } else if (path === "/projects") {
       return "PROJELER";
-    } else if 
-
+    }
   };
 
   return (
