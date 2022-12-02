@@ -20,10 +20,6 @@ const Home = () => {
 
   const { id } = useParams();
 
-  console.log(id);
-
-  console.log(data);
-
   return (
     <div>
       {loading && <div>Loading...</div>}
