@@ -26,6 +26,14 @@ const Header = () => {
         <div className="tersyazi__cizgi"></div>
         <h3>{handleHangdownText(pathname)}</h3>
       </div>
+      <div>
+        <div className="logo"></div>
+        <nav>
+          <button>Projeler</button>
+          <button>Hakkımızda</button>
+          <button>İletişim</button>
+        </nav>
+      </div>
     </div>
   );
 };
