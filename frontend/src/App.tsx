@@ -1,6 +1,3 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
@@ -11,6 +8,8 @@ import Contact from "./pages/Contact";
 import Header from "./components/Header";
 import Project from "./pages/Project";
 import Footer from "./components/Footer";
+
+import "./styles/App.scss";
 
 const client = new ApolloClient({
   uri: "http://localhost:1337/graphql",

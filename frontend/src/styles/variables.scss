@@ -6,10 +6,10 @@ $mid-font-color: #7d828f;
 $dark-font-color: #1b1d23;
 $transistion: 300ms ease-in-out;
 // breakpoints
-$screen-sm-max: 576px;
-$screen-md-max: 768px;
-$screen-lg-max: 992px;
-$screen-xl-max: 1200px;
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
 
 @mixin sm {
   @media (max-width: #{$screen-sm-min}) {

@@ -66,4 +66,7 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

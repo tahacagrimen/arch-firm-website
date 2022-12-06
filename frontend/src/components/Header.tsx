@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import "../styles/Header.scss";
 
 const Header = () => {
   const location = useLocation();
 
+  const [activeButton, setActiveButton] = useState<string>("");
+
   let navigate = useNavigate();
 
   const { pathname } = location;
-
-  console.log(pathname);
 
   const handleHangdownText = (path: string) => {
     if (path === "/") {
@@ -17,7 +18,7 @@ const Header = () => {
       return "HAKKIMDA";
     } else if (path === "/contact") {
       return "İLETİŞİM";
-    } else if (path === "/projects") {
+    } else if (path === "/projects" || path.includes("/projects/")) {
       return "PROJELER";
     }
   };
@@ -29,11 +30,52 @@ const Header = () => {
         <h3>{handleHangdownText(pathname)}</h3>
       </div>
       <div className="navbar">
-        <div className="logo"></div>
+        <div
+          className="logo"
+          onClick={() => {
+            setActiveButton("");
+            navigate("/");
+          }}
+        >
+          <img src="" alt="" />
+          <h1>
+            Arkayın <span>Mimarlık</span>
+          </h1>
+        </div>
         <nav>
-          <button onClick={() => navigate("/projects")}>Projeler</button>
-          <button onClick={() => navigate("/about")}>Hakkımızda</button>
-          <button onClick={() => navigate("/contact")}>İletişim</button>
+          <button
+            className={`navbtn navbtn${
+              activeButton === "projects" ? "--active" : ""
+            }`}
+            onClick={() => {
+              setActiveButton("projects");
+              navigate("/projects");
+            }}
+          >
+            Projeler
+          </button>
+          <button
+            className={`navbtn navbtn${
+              activeButton === "about" ? "--active" : ""
+            }`}
+            onClick={() => {
+              setActiveButton("about");
+              navigate("/about");
+            }}
+          >
+            Hakkımızda
+          </button>
+          <button
+            className={`navbtn navbtn${
+              activeButton === "contact" ? "--active" : ""
+            }`}
+            onClick={() => {
+              setActiveButton("contact");
+              navigate("/contact");
+            }}
+          >
+            İletişim
+          </button>
         </nav>
       </div>
       <div className="sidebar">

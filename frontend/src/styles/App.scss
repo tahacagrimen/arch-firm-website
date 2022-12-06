@@ -1,0 +1,14 @@
+@import "./variables.scss";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 1444px;
+  font-family: $font-family;
+  @include md {
+    width: 100%;
+  }
+}
