@@ -4,11 +4,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 80%;
   max-width: 1444px;
   font-family: $font-family;
+  min-height: 100vh;
+  @include lg {
+    width: 95%;
+  }
+  @include xl {
+    width: 95%;
+  }
   @include md {
+    width: 100%;
+  }
+  @include sm {
     width: 100%;
   }
 }

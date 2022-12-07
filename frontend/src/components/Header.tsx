@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { HiMenu, HiX } from "react-icons/hi";
 import "../styles/Header.scss";
 
 const Header = () => {
   const location = useLocation();
 
   const [activeButton, setActiveButton] = useState<string>("");
+
+  const [sidebar, setSidebar] = useState<boolean>(true);
 
   let navigate = useNavigate();
 
@@ -37,7 +40,10 @@ const Header = () => {
             navigate("/");
           }}
         >
-          <img src="" alt="" />
+          <img
+            src="https://github.com/tahacagrimen/strapi-learning/blob/master/frontend/src/media/logo.png?raw=true"
+            alt="arkayın logo"
+          />
           <h1>
             Arkayın <span>Mimarlık</span>
           </h1>
@@ -79,11 +85,44 @@ const Header = () => {
         </nav>
       </div>
       <div className="sidebar">
-        <div className="sidebar__logo"></div>
-        <div className="sidebar__menu">
-          <button onClick={() => navigate("/projects")}>Projeler</button>
-          <button onClick={() => navigate("/about")}>Hakkımızda</button>
-          <button onClick={() => navigate("/contact")}>İletişim</button>
+        <div
+          onClick={() => setSidebar((prev) => !prev)}
+          className="sidebar__logo"
+        >
+          {sidebar ? <HiMenu /> : <HiX />}
+        </div>
+        <div
+          className={
+            sidebar ? "sidebar_menu" : "sidebar_menu sidebar_menu--active"
+          }
+        >
+          <button
+            onClick={() => {
+              setSidebar(true);
+              setActiveButton("projects");
+              navigate("/projects");
+            }}
+          >
+            Projeler
+          </button>
+          <button
+            onClick={() => {
+              setSidebar(true);
+              setActiveButton("about");
+              navigate("/about");
+            }}
+          >
+            Hakkımızda
+          </button>
+          <button
+            onClick={() => {
+              setSidebar(true);
+              setActiveButton("contact");
+              navigate("/contact");
+            }}
+          >
+            İletişim
+          </button>
         </div>
       </div>
     </div>
