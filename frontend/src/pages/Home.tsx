@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import { useParams } from "react-router-dom";
+import Slider from "../components/Slider";
 
 const PROJECTS = gql`
   query GetProjects {
@@ -9,6 +10,15 @@ const PROJECTS = gql`
         attributes {
           title
           description
+          img {
+            data {
+              id
+              attributes {
+                formats
+                url
+              }
+            }
+          }
         }
       }
     }
@@ -18,10 +28,11 @@ const PROJECTS = gql`
 const Home = () => {
   const { loading, error, data } = useQuery(PROJECTS);
 
-  const { id } = useParams();
+  console.log(data);
 
   return (
     <div>
+      <Slider />
       {loading && <div>Loading...</div>}
       {data && (
         <div>
