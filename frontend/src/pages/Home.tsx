@@ -1,51 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import Slider from "../components/Slider";
-
-const PROJECTS = gql`
-  query GetProjects {
-    projects {
-      data {
-        attributes {
-          title
-          description
-          img {
-            data {
-              id
-              attributes {
-                formats
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { ProjectsContext } from "../context/ProjectsContext";
+import useGraphql from "../hooks/useGraphql";
 
 const Home = () => {
-  const { loading, error, data } = useQuery(PROJECTS);
+  const { projects, setProjects } = useContext(ProjectsContext);
 
-  console.log(data);
+  const { data, loading, error } = useGraphql();
 
-  return (
-    <div>
-      <Slider />
-      {loading && <div>Loading...</div>}
-      {data && (
-        <div>
-          {data.projects.data.map((project: any) => (
-            <div key={project.id}>
-              <h2>{project.attributes.title}</h2>
-              <p>{project.attributes.description}</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  useEffect(() => {
+    if (data) {
+      setProjects(data);
+    }
+  }, [data]);
+
+  return <div>{projects ? <Slider proje={projects} /> : null}</div>;
 };
 
 export default Home;

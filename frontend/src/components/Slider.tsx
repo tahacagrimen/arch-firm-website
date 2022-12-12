@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ProjectsContext } from "../context/ProjectsContext";
 import "../styles/Slider.scss";
 
-const Slider = () => {
+const Slider = (proje: any) => {
   const [slide, setSlide] = useState(1);
+  const { projects } = useContext(ProjectsContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,7 +19,9 @@ const Slider = () => {
 
   return (
     <div className="slider">
-      <div className="slider__background"></div>
+      <div className="slider__background">
+        <img src="" alt="" />
+      </div>
       <div className="slider__info"></div>
       <div className="slider__btngroup">
         <button
